@@ -39,3 +39,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+**/settings/*-local.yml
+**/settings-local.yml
+.chamber*.enc
+.chamber*.pem
+.chamber*.enc.pass
+!.chamber*.pub.pem
