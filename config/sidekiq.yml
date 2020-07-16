@@ -1,0 +1,9 @@
+:concurrency: <%= Chamber.env.sidekiq_concurrency  %>
+staging:
+  :concurrency: <%= Chamber.env.sidekiq_concurrency  %>
+production:
+  :concurrency: <%= Chamber.env.sidekiq_concurrency  %>
+:queues:
+  - critical
+  - default
+  - low

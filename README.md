@@ -1,24 +1,43 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The problem is that Chamber is not being recognised in the sidekiq.yml file.
 
-Things you may want to cover:
+**Setting up**
 
-* Ruby version
+```ruby
+gem "chamber"
 
-* System dependencies
+gem 'sidekiq'
+```
 
-* Configuration
+**1. What is Chamber?**
 
-* Database creation
+Chamber allows you set some variables in the `config/settings.yml` file. These variables are then made available via `Chamber.env.variable_i_have_set_in_the_config_file`.
 
-* Database initialization
+Here is a snippet of this `config/settings.yml` file (not to be confused with the sidekiq.yml file):
 
-* How to run the test suite
+```yml
+development:
+  sidekiq_concurrency: 5
 
-* Services (job queues, cache servers, search engines, etc.)
+test:  
+  sidekiq_concurrency: 5
 
-* Deployment instructions
+production:  
+  sidekiq_concurrency: 5
+```
 
-* ...
+**2. Setting Chamber variable in a YAML file**
+
+Spin up a rails console session:
+
+```terminal
+rails c
+Chamber.env.sidekiq_concurrency # => 5
+```
+
+**3. Run `bundle exec sidekiq`**
+
+Here is the error: WARN: NameError: uninitialized constant Chamber
+
+2020-07-16T03:01:23.284Z pid=19958 tid=gsqyiai6q WARN: NameError: uninitialized constant Chamber
